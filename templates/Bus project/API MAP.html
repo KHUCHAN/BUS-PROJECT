@@ -9,7 +9,48 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %} ">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 
+<style>
+		textarea {
+            placeholder:"댓글 입력";
+			width: 350px;
+			height: 100px;
+			padding: 10px;
+			box-sizing: border-box;
+			border: solid 2px #3dc21b;
+			border-radius: 5px;
+			font-size: 16px;
+			resize: both;
+		}
+        .btnReply {
+            box-shadow:inset 0px 1px 0px 0px #3dc21b;
+	        background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	        background-color:#44c767;
+	        border-radius:6px;
+	        border:1px solid #18ab29;
+	        display:inline-block;
+	        cursor:pointer;
+	        color:#ffffff;
+	        font-family:Verdana;
+	        font-size:16px;
+	        padding:5px 24px;
+	        text-decoration:none;
+	        text-shadow:0px 1px 0px #2f6627;
+            position : absolute;
 
+        }
+        .replyTable{
+            width: 350px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: left;
+
+
+        }
+        .replyTbody{
+            padding: 10px;
+            text-align: left;
+        }
+</style>
   <body>
 {#  검색 창 header #}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,26 +122,22 @@
             </form>
         </div>
         <div style="width: 1200px; height: 600px; background: gold">API넣기</div>
-        <div style="width: 350px; height: 600px; border: solid 1px black;">
-        <label>
-            <textarea calss="replyContent" placeholder="댓글 입력"></textarea>
-            <button class="btnReply" type="submit">전송</button>
-        </label>
-    </div>
-    <div style= "width: 350px; padding :10px 0 15px 0 ; border: solid 1px black;">
-      <table border = "1" class="replyTable">
-          <tr>
-              <td>내용</td>
-          </tr>
-          <tbody class = "replyTbody" typeof="string">
+        <div>
+            <textarea calss="replyContent"  > </textarea>
+            <button class="btnReply" type="submit"> 전송 </button>
+            <table class="replyTable" >
+                <tr>
+                    <td >코멘트</td>
+                </tr>
+            <tbody class = "replyTbody" typeof="string">
             {%  for item in reply %}
-            <tr>
-                <td>{{ item.content }}</td>
-            </tr>
-          </tbody>
-          {%  endfor %}
-      </table>
-    </div>
+                 <tr>
+                    <td>{{ item.content }}</td>
+                 </tr>
+            </tbody>
+             {%  endfor %}
+            </table>
+        </div>
     </div>
 {% endfor %}
 
